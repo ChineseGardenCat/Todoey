@@ -35,6 +35,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A639EC5B2206C47300923232 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A639EC5C2206C48700923232 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A690D8722206569E00F2AEB7 /* Main.storyboard */,
+				A690D877220656A100F2AEB7 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A639EC5D2206C48F00923232 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A690D8702206569E00F2AEB7 /* TodoListViewController.swift */,
+				A690D86E2206569E00F2AEB7 /* AppDelegate.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A639EC5E2206C4B000923232 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A690D875220656A100F2AEB7 /* Assets.xcassets */,
+				A690D87A220656A100F2AEB7 /* Info.plist */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
 		A690D8622206569E00F2AEB7 = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +88,10 @@
 		A690D86D2206569E00F2AEB7 /* Todoey */ = {
 			isa = PBXGroup;
 			children = (
-				A690D86E2206569E00F2AEB7 /* AppDelegate.swift */,
-				A690D8702206569E00F2AEB7 /* TodoListViewController.swift */,
-				A690D8722206569E00F2AEB7 /* Main.storyboard */,
-				A690D875220656A100F2AEB7 /* Assets.xcassets */,
-				A690D877220656A100F2AEB7 /* LaunchScreen.storyboard */,
-				A690D87A220656A100F2AEB7 /* Info.plist */,
+				A639EC5E2206C4B000923232 /* Support Files */,
+				A639EC5B2206C47300923232 /* Model */,
+				A639EC5D2206C48F00923232 /* Controller */,
+				A639EC5C2206C48700923232 /* View */,
 			);
 			path = Todoey;
 			sourceTree = "<group>";
