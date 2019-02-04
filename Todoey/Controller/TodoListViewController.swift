@@ -11,22 +11,18 @@ import UIKit
 class TodoListViewController: UITableViewController {
     
     var toDoListItemArray = [Item]()
-    let defaults = UserDefaults.standard
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let items = UserDefaults.standard.array(forKey: "toDoListItemArray") as? [Item]{
-            toDoListItemArray = items
-        }
-        let newItem1 = Item(content: "Find Mike", whetherChecked: true)
-        toDoListItemArray.append(newItem1)
+//        Load data from user default
+//        if let items = UserDefaults.standard.array(forKey: "toDoListItemArray") as? [Item]{
+//            toDoListItemArray = items
+//        }
         
-        let newItem2 = Item(content: "Catch Mike", whetherChecked: false)
-        toDoListItemArray.append(newItem2)
-        
-        let newItem3 = Item(content: "Eat Mike", whetherChecked: false)
-        toDoListItemArray.append(newItem3)
+        loadItems()
+    
     }
     
     //MARK - Tableview Datasource Methods
@@ -54,9 +50,13 @@ class TodoListViewController: UITableViewController {
         
         toDoListItemArray[indexPath.row].isChecked = !toDoListItemArray[indexPath.row].isChecked
         
+        saveItems()
+        
         tableView.reloadData()
         
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        
         
     }
     
@@ -72,8 +72,11 @@ class TodoListViewController: UITableViewController {
             if let itemToBeAdded = textField.text{
                 self.toDoListItemArray.append(Item(content: itemToBeAdded, whetherChecked: false))
             }
+//            save data to Userdefault
+//            self.defaults.set(self.toDoListItemArray, forKey: "toDoListItemArray")
             
-            self.defaults.set(self.toDoListItemArray, forKey: "toDoListItemArray")
+            
+            self.saveItems()
             
             self.tableView.reloadData()
         }
@@ -89,6 +92,29 @@ class TodoListViewController: UITableViewController {
         
     }
     
+    //MARK - Data manipulation Methods
+    
+    func saveItems () {
+        let encoder = PropertyListEncoder()
+        
+        do{
+            let data = try encoder.encode(toDoListItemArray)
+            try data.write(to: dataFilePath!)
+        }catch{
+            print("Error while encoding")
+        }
+    }
+    
+    func loadItems() {
+        if let data = try? Data(contentsOf: dataFilePath!){
+            let decoder = PropertyListDecoder()
+            do{
+                toDoListItemArray = try decoder.decode([Item].self, from: data)
+            }catch{
+                print("Decode Error: \(error)")
+            }
+        }
+    }
     
 
 }
