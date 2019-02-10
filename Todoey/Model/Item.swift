@@ -6,17 +6,19 @@
 //  Copyright © 2019 Mathhew MA. All rights reserved.
 //
 
-import Foundation
+// Replaced by Core Data entity
 
-class Item : Codable {
-    
-    var title : String
-    var isChecked : Bool
-    
-    init(content: String, whetherChecked: Bool) {
-        title = content
-        isChecked = whetherChecked
-    }
-    
-    
-}
+//import Foundation
+//
+//class Item : Codable {
+//    
+//    var title : String
+//    var isChecked : Bool
+//    
+//    init(content: String, whetherChecked: Bool) {
+//        title = content
+//        isChecked = whetherChecked
+//    }
+//    
+//    
+//}
